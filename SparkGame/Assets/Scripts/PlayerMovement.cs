@@ -18,23 +18,31 @@ public class PlayerMovement : MonoBehaviour
     {
         tank_base = GetComponent<Rigidbody>();
     }
-    // Update is called once per frames
-    void Update()
-    {
-        Vector3 movement = new Vector3 (movementX, 0.0f, movementY);
-        tank_base.AddForce(speed * movement);
-    }
-
-    void OnRotate (InputAction.CallbackContext rotateValue)
+    
+    void OnRotate(InputAction.CallbackContext rotateValue)
     {
         rotation_input = rotateValue.ReadValue<float>();
+        
     }
 
-    void OnMove (InputValue movementValue)
+    void OnMove(InputValue movementValue)
     {
         Vector2 movementVector = movementValue.Get<Vector2>();
 
         movementX = movementVector.x;
         movementY = movementVector.y;
+    }
+
+    // Update is called once per frames
+    void Update()
+    {
+        Vector3 movement = new Vector3 (movementX, 0.0f, movementY);
+        tank_base.AddForce(speed * movement);
+
+        if (rotation_input != 0f)
+        {
+            Quaternion deltaRotation = Quaternion.Euler(Vector3.up * rotation_input * rotation_speed * Time.fixedDeltaTime);
+            tank_base.MoveRotation(tank_base.rotation * deltaRotation);
+        }
     }
 }
