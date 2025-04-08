@@ -56,5 +56,5 @@
         "temp/": true,
         "Temp/": true
     },
-    "dotnet.defaultSolution": "Spark.sln"
+    "dotnet.defaultSolution": "SparkGame.sln"
 }
