@@ -378,12 +378,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1078251079}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.34695238, y: -0.61426514, z: 0.34391993, w: 0.6196947}
-  m_LocalPosition: {x: 4.623581, y: 8.061565, z: -0.04046271}
+  m_LocalRotation: {x: 0.2705786, y: 0.006355733, z: -0.0017864184, w: 0.9626753}
+  m_LocalPosition: {x: -0.08984375, y: 4.6531005, z: -6.803788}
   m_LocalScale: {x: 1, y: 1.169905, z: 0.9328364}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 1297376536}
   m_LocalEulerAnglesHint: {x: 30, y: 0, z: 0}
 --- !u!114 &1078251083
 MonoBehaviour:
@@ -582,6 +582,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 1078251082}
   - {fileID: 276052428}
   - {fileID: 560093764}
   m_Father: {fileID: 0}
@@ -627,7 +628,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tank_speed: 20
   tank_rotation_speed: 60
-  torque: 10
 --- !u!114 &1297376539
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -786,5 +786,4 @@ SceneRoots:
   m_Roots:
   - {fileID: 1180023454}
   - {fileID: 778094099}
-  - {fileID: 1078251082}
   - {fileID: 1297376536}
