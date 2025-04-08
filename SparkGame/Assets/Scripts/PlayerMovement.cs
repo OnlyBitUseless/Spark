@@ -5,9 +5,11 @@ using UnityEngine.InputSystem;
 public class PlayerMovement : MonoBehaviour
 {   
     public float speed = 10;
+    public float rotation_speed = 100f;
 
     private Rigidbody tank_base;
-
+    
+    private float rotation_input;
     private float movementX;
     private float movementY;
 
@@ -23,10 +25,9 @@ public class PlayerMovement : MonoBehaviour
         tank_base.AddForce(speed * movement);
     }
 
-    void OnRotate (InputValue rotateValue)
+    void OnRotate (InputAction.CallbackContext rotateValue)
     {
-        float rotation = rotateValue.Get<float>();
-        transform.Rotate(0,rotateValue,0);
+        rotation_input = rotateValue.ReadValue<float>();
     }
 
     void OnMove (InputValue movementValue)
