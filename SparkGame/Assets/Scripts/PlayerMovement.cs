@@ -18,7 +18,7 @@ public class PlayerMovement : MonoBehaviour
     {
         tank_base = GetComponent<Rigidbody>();
     }
-    
+
     void OnRotate(InputAction.CallbackContext rotateValue)
     {
         rotation_input = rotateValue.ReadValue<float>();
@@ -34,7 +34,7 @@ public class PlayerMovement : MonoBehaviour
     }
 
     // Update is called once per frames
-    void Update()
+    void FixedUpdate()
     {
         Vector3 movement = new Vector3 (movementX, 0.0f, movementY);
         tank_base.AddForce(speed * movement);
