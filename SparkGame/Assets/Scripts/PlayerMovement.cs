@@ -25,7 +25,7 @@ public class PlayerMovement : MonoBehaviour
 
     void OnRotate (InputValue rotateValue)
     {
-        float rotation = rotateValue.Get();
+        float rotation = rotateValue.Get<float>();
         transform.Rotate(0,rotateValue,0);
     }
 
