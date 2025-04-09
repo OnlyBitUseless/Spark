@@ -6,10 +6,8 @@ namespace Tank
     {
         #region Variables
         [Header("Movement properties")]
-        public float tank_speed = 15f;
-        public float tank_rotation_speed = 20f;
-
-        private float movement;
+        public float tank_speed = 20f;
+        public float tank_rotation_speed = 120f;
 
         private Rigidbody rb;
         private Tank_Inputs input;
@@ -28,6 +26,7 @@ namespace Tank
             {
                 HandleMovement();
             }
+            
         }
         #endregion
 
@@ -39,7 +38,7 @@ namespace Tank
 
             Quaternion target_rotation = transform.rotation * Quaternion.Euler(Vector3.up * (tank_rotation_speed * input.RotationInput * Time.deltaTime));
             rb.MoveRotation(target_rotation);
-        }
+        }   
         #endregion
     }
 }
