@@ -9,6 +9,7 @@ namespace Tank
         public float tank_speed = 15f;
         public float tank_rotation_speed = 20f;
 
+        private float movement;
 
         private Rigidbody rb;
         private Tank_Inputs input;
@@ -33,8 +34,8 @@ namespace Tank
         #region CustomMethods
         protected virtual void HandleMovement()
         {
-            Vector3 target_postion = transform.position + (transform.forward * input.ForwardInput * tank_speed * Time.deltaTime);
-            rb.MovePosition(target_postion);
+            Vector3 movement = transform.forward * input.ForwardInput;
+            rb.AddForce(movement * tank_speed);
 
             Quaternion target_rotation = transform.rotation * Quaternion.Euler(Vector3.up * (tank_rotation_speed * input.RotationInput * Time.deltaTime));
             rb.MoveRotation(target_rotation);
