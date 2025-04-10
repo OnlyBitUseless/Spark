@@ -6,12 +6,17 @@ namespace Tank
     {
         #region Variables
         [Header("Movement properties")]
-        public float tank_speed = 20f;
-        public float tank_rotation_speed = 120f;
+        public float motorTorque = 2000f;
+        public float brakeTorque = 2000f;
+        public float maxSpeed = 20f;
+        public float steeringRange = 30f;
+        public float steeringRangeAtMaxSpeed = 10f;
+        public float centreOfGravityOffset = -1f;
 
+        private WheelControl[] wheels;
         private Rigidbody rb;
         private Tank_Inputs input;
-        
+
         #endregion
         
         #region BuildinMethods
@@ -19,6 +24,12 @@ namespace Tank
         {
             rb = GetComponent<Rigidbody>();
             input = GetComponent<Tank_Inputs>();
+
+            Vector3 centerOfMass = rb.centerOfMass;
+            centerOfMass.y += centreOfGravityOffset;
+            rb.centerOfMass = centerOfMass;
+
+            wheels = GetComponentsInChildren<WheelControl>();
         }
 
         void FixedUpdate()
@@ -34,12 +45,42 @@ namespace Tank
         #region CustomMethods
         protected virtual void HandleMovement()
         {
-            Vector3 movement = transform.forward * input.ForwardInput;
-            rb.AddForce(movement * tank_speed);
+            float forwardSpeed = Vector3.Dot(transform.forward, rb.linearVelocity);
+            float speedFactor = Mathf.InverseLerp(0, maxSpeed, Mathf.Abs(forwardSpeed)); // Normalized speed factor
 
-            Quaternion target_rotation = transform.rotation * Quaternion.Euler(Vector3.up * (tank_rotation_speed * input.RotationInput * Time.deltaTime));
-            rb.MoveRotation(target_rotation);
-        }   
+            // Reduce motor torque and steering at high speeds for better handling
+            float currentMotorTorque = Mathf.Lerp(motorTorque, 0, speedFactor);
+            float currentSteerRange = Mathf.Lerp(steeringRange, steeringRangeAtMaxSpeed, speedFactor);
+
+            // Determine if the player is accelerating or trying to reverse
+            bool isAccelerating = Mathf.Sign(input.ForwardInput) == Mathf.Sign(forwardSpeed);
+
+            foreach (var wheel in wheels)
+            {
+                // Apply steering to wheels that support steering
+                if (wheel.steerable)
+                {
+                    wheel.WheelCollider.steerAngle = input.RotationInput * currentSteerRange;
+                }
+
+                if (isAccelerating)
+                {
+                    // Apply torque to motorized wheels
+                    if (wheel.motorized)
+                    {
+                        wheel.WheelCollider.motorTorque = input.ForwardInput * currentMotorTorque;
+                    }
+                    // Release brakes when accelerating
+                    wheel.WheelCollider.brakeTorque = 0f;
+                }
+                else
+                {
+                    // Apply brakes when reversing direction
+                    wheel.WheelCollider.motorTorque = 0f;
+                    wheel.WheelCollider.brakeTorque = Mathf.Abs(input.ForwardInput) * brakeTorque;
+                }
+            }
+        }
         #endregion
     }
 }
