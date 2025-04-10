@@ -11,6 +11,7 @@ namespace Tank
 
         private Rigidbody rb;
         private Tank_Inputs input;
+        
         #endregion
         
         #region BuildinMethods
