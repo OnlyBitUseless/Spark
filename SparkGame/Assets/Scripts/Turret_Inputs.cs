@@ -29,24 +29,16 @@ namespace Tank
         // Update is called once per frame
         void FixedUpdate()
         {
-            handleRotation();
             rotateToMouse();
-            
         }
 
         #region CustomMethods
-        protected virtual void handleRotation() 
-        {
-            Debug.Log(input.ReticlePosition);
-        #endregion
-        }
-        
-        void rotateToMouse() 
+        protected virtual void rotateToMouse() 
         {
             Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
             RaycastHit hit;
 
-            if (Physics.Raycast(ray, out hit, Mathf.Infinity, groundLayer))
+            if (Physics.Raycast(ray, out hit, Mathf.Infinity))
             {
                 Vector3 targetPoint = hit.point;
                 targetPoint.y = kansi.position.y;
@@ -66,6 +58,7 @@ namespace Tank
                 piippu.RotateAround(kansi.position, Vector3.up, clampedAngle);
             }
         }
+        #endregion
     }
 }
 
