@@ -44,6 +44,7 @@ namespace Tank
                 HandleInputs();
             }
         }
+
         private void OnDrawGizmos()
         {
             Gizmos.color = Color.red;
@@ -61,7 +62,7 @@ namespace Tank
                 reticlePosition = hit.point;
                 reticleNormal = hit.normal;
             }
-
+            
             forwardInput = Input.GetAxis("Vertical");
             rotationInput = Input.GetAxis("Horizontal");
         }
