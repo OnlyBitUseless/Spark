@@ -15,6 +15,11 @@ namespace Tank
         public LayerMask groundLayer;
         public float turret_rotation_speed = 150f;
         private Rigidbody rb;
+        private Vector3 targetPoint;
+        public Vector3 TargetPoint
+        {
+            get { return targetPoint; }
+        }
         private Tank_Inputs input;
         #endregion
         
@@ -32,7 +37,7 @@ namespace Tank
             rotateToMouse();
         }
 
-        #region CustomMethods
+        #region CustomMethods  
         protected virtual void rotateToMouse() 
         {
             Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
@@ -41,6 +46,7 @@ namespace Tank
             if (Physics.Raycast(ray, out hit, Mathf.Infinity))
             {
                 Vector3 targetPoint = hit.point;
+
                 targetPoint.y = kansi.position.y;
                 
                 Vector3 direction = targetPoint - kansi.position;
