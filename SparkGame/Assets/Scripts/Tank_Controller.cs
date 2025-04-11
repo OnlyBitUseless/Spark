@@ -50,25 +50,22 @@ namespace Tank
 
             // Reduce motor torque and steering at high speeds for better handling
             float currentMotorTorque = Mathf.Lerp(motorTorque, 0, speedFactor);
-            float currentSteerRange = Mathf.Lerp(steeringRange, steeringRangeAtMaxSpeed, speedFactor);
 
             // Determine if the player is accelerating or trying to reverse
             bool isAccelerating = Mathf.Sign(input.ForwardInput) == Mathf.Sign(forwardSpeed);
 
             foreach (var wheel in wheels)
             {
-                // Apply steering to wheels that support steering
-                if (wheel.steerable)
-                {
-                    wheel.WheelCollider.steerAngle = input.RotationInput * currentSteerRange;
-                }
-
                 if (isAccelerating)
                 {
                     // Apply torque to motorized wheels
                     if (wheel.motorized)
                     {
-                        wheel.WheelCollider.motorTorque = input.ForwardInput * currentMotorTorque;
+                        if (wheel.transform.localPosition.x < 0){
+                            wheel.WheelCollider.motorTorque = (input.ForwardInput * currentMotorTorque) / (2 + input.RotationInput);
+                        } else {
+                            wheel.WheelCollider.motorTorque = (input.ForwardInput * currentMotorTorque) / (2 - input.RotationInput);
+                        }
                     }
                     // Release brakes when accelerating
                     wheel.WheelCollider.brakeTorque = 0f;
