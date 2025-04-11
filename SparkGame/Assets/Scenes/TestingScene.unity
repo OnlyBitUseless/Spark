@@ -161,6 +161,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 159165374}
+  - component: {fileID: 159165375}
+  - component: {fileID: 159165376}
   m_Layer: 0
   m_Name: Turret
   m_TagString: Untagged
@@ -177,14 +179,45 @@ Transform:
   m_GameObject: {fileID: 159165373}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -4.86, y: 0.69, z: 1}
+  m_LocalPosition: {x: -0.02, y: 1.03, z: 0.94}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1111282655}
   - {fileID: 810930294}
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 1297376536}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &159165375
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 159165373}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 08867c92103db824b89992fa70cc0b01, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  kansi: {fileID: 810930294}
+  piippu: {fileID: 1111282655}
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 8
+  turret_rotation_speed: 100
+--- !u!114 &159165376
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 159165373}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dcfcf49e604b6774492f811919c6cfde, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  camera: {fileID: 1078251081}
 --- !u!1 &164764071
 GameObject:
   m_ObjectHideFlags: 0
@@ -1350,7 +1383,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0.2705786, y: 0.006355733, z: -0.0017864184, w: 0.9626753}
   m_LocalPosition: {x: -0.08984375, y: 4.6531005, z: -6.803788}
-  m_LocalScale: {x: 1, y: 1.169905, z: 0.9328364}
+  m_LocalScale: {x: 1, y: 1.169905, z: 0.93283653}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1297376536}
@@ -1856,8 +1889,9 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1078251082}
+  - {fileID: 159165374}
   - {fileID: 276052428}
+  - {fileID: 1078251082}
   - {fileID: 560093764}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1901,7 +1935,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   motorTorque: 2000
-  brakeTorque: 2000
+  brakeTorque: 20000000
   maxSpeed: 20
   steeringRange: 30
   steeringRangeAtMaxSpeed: 10
@@ -2183,6 +2217,5 @@ SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 1180023454}
-  - {fileID: 159165374}
   - {fileID: 1297376536}
   - {fileID: 33248295}
