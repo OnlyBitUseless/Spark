@@ -33,7 +33,12 @@ namespace Tank
         {
             get { return rotationInput; }
         }
-    
+
+        private bool trackOnGround;
+        public bool TrackOnGround
+        {
+            get { return trackOnGround; }
+        }
         #endregion
 
         #region BuildinMethods
@@ -42,6 +47,14 @@ namespace Tank
             if (camera)
             {
                 HandleInputs();
+            }
+
+            void OnCollisionEnter(Collision collision)
+            {
+                if (collision.gameObject.CompareTag("GroundTag"))
+                {
+                trackOnGround = true;
+                }
             }
         }
 

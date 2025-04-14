@@ -1890,8 +1890,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cbcaf55bc9af6f74cbb687b110893672, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tank_speed: 15
-  tank_rotation_speed: 20
+  tank_speed: 30
+  tank_rotation_speed: 45
 --- !u!114 &1297376539
 MonoBehaviour:
   m_ObjectHideFlags: 0
