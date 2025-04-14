@@ -538,7 +538,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: 0.7071068, w: 0.7071068}
   m_LocalPosition: {x: 3.5573056, y: -9.206052, z: 5.4767346}
-  m_LocalScale: {x: -0.5, y: 0.17366317, z: 2.0358405}
+  m_LocalScale: {x: -0.5, y: 0.17366317, z: 2.018882}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 560093764}
@@ -1891,7 +1891,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tank_speed: 15
-  tank_rotation_speed: 20
+  tank_max_speed: 100
+  tank_rotation_speed: 90
+  tank_rotation_at_max_speed: 15
 --- !u!114 &1297376539
 MonoBehaviour:
   m_ObjectHideFlags: 0
