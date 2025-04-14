@@ -48,13 +48,13 @@ namespace Tank
             {
                 HandleInputs();
             }
+        }
 
-            void OnCollisionEnter(Collision collision)
+        void OnCollisionEnter(Collision collision)
+        {
+            if (collision.gameObject.CompareTag("GroundTag"))
             {
-                if (collision.gameObject.CompareTag("GroundTag"))
-                {
-                trackOnGround = true;
-                }
+            trackOnGround = true;
             }
         }
 
