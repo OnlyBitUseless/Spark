@@ -7,25 +7,12 @@ namespace Tank
         #region Variables
         public Transform kansi;
         public Transform piippu;
-        private Camera mainCamera;
-
-        void Awake()
-        {
-            mainCamera = Camera.main;
-        }
-
         public LayerMask groundLayer;
 
         public float turret_rotation_speed = 150f;
-        private Rigidbody rb;
-        private Vector3 targetPoint;
+
         private float angle;
-
-        public Vector3 TargetPoint
-        {
-            get { return targetPoint; }
-        }
-
+        private Rigidbody rb;
         private Tank_Inputs input;
         
         #endregion
@@ -43,35 +30,33 @@ namespace Tank
         // Update is called once per frame
         void FixedUpdate()
         {
-            float maxAngleThisFrame = turret_rotation_speed * Time.deltaTime;
-            float clampedAngle = Mathf.Clamp(angle, -maxAngleThisFrame, maxAngleThisFrame);
-            piippu.RotateAround(kansi.position, Vector3.up, clampedAngle);
-            angle = angle-clampedAngle;
+            HandleTurretRotation();
         }
 
         #endregion
 
         #region CustomMethods  
 
-        protected virtual void rotateToMouse() 
+        protected virtual void HandleTurretRotation()
         {
-            Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
-            RaycastHit hit;
+            float maxAngleThisFrame = turret_rotation_speed * Time.deltaTime;
+            float clampedAngle = Mathf.Clamp(angle, -maxAngleThisFrame, maxAngleThisFrame);
+            piippu.RotateAround(kansi.position, Vector3.up, clampedAngle);
+            angle = angle-clampedAngle;
+        }
 
-            if (Physics.Raycast(ray, out hit, Mathf.Infinity))
-            {
-                Vector3 targetPoint = hit.point;
+        protected virtual void RotationAngleToMouse() 
+        {
+            Vector3 targetPoint = input.ReticlePosition;
 
-                targetPoint.y = kansi.position.y;
+            targetPoint.y = kansi.position.y;
                 
-                Vector3 direction = targetPoint - kansi.position;
+            Vector3 direction = targetPoint - kansi.position;
 
-                Vector3 fromDirection = piippu.position - kansi.position;
-                Vector3 toDirection = direction;
+            Vector3 fromDirection = piippu.position - kansi.position;
+            Vector3 toDirection = direction;
 
-                angle = Vector3.SignedAngle(fromDirection, toDirection, Vector3.up);
-            }
-
+            angle = Vector3.SignedAngle(fromDirection, toDirection, Vector3.up);
         }
         #endregion
     }

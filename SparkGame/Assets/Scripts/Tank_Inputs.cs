@@ -6,7 +6,7 @@ namespace Tank
     {
         #region Variables
         [Header("Input Properties")]
-        public Camera camera;
+        public Camera mainCamera;
         #endregion
 
         #region Properties
@@ -42,9 +42,10 @@ namespace Tank
         #endregion
 
         #region BuildinMethods
+
         void Update()
         {
-            if (camera)
+            if (mainCamera)
             {
                 HandleInputs();
             }
@@ -68,7 +69,7 @@ namespace Tank
         #region CustomMethods
         protected virtual void HandleInputs()
         {
-            Ray screenRay = camera.ScreenPointToRay(Input.mousePosition);
+            Ray screenRay = mainCamera.ScreenPointToRay(Input.mousePosition);
             RaycastHit hit;
             if (Physics.Raycast(screenRay, out hit))
             {
