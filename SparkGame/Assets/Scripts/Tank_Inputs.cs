@@ -64,6 +64,7 @@ namespace Tank
             Gizmos.color = Color.red;
             Gizmos.DrawSphere(reticlePosition, 0.5f);
         }
+        
         #endregion
 
         #region CustomMethods
