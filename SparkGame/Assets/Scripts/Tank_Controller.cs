@@ -10,7 +10,7 @@ using UnityEngine;
          public float tank_max_speed = 100f;
          public float tank_rotation_speed = 200f;
          public float tank_rotation_at_max_speed = 15f;
- 
+        public float groundCheckDistance = 1.5f;
          private Rigidbody rb;
          private Tank_Inputs input;
          #endregion
@@ -24,10 +24,17 @@ using UnityEngine;
  
          void FixedUpdate()
          {
-             if (rb && input)
-             {
-                 HandleMovement();
-             }
+
+            Vector3 RaycastOrigin = transform.position + Vector3.up;
+
+            bool isGrounded = Physics.Raycast(RaycastOrigin, Vector3.down, groundCheckDistance);
+
+            //Debug.DrawRay(transform.position, Vector3.down * groundCheckDistance, Color.blue);
+
+            if (rb && input && isGrounded)
+            {
+                HandleMovement();
+            }
          }
          #endregion
  
@@ -46,7 +53,13 @@ using UnityEngine;
             Quaternion target_rotation = transform.rotation * Quaternion.Euler(Vector3.up * (current_rotation* input.RotationInput * Time.deltaTime));
             rb.MoveRotation(target_rotation);
          }
+        public LayerMask groundLayer;
+
+            void Update()
+            {
+                
+            }
+        }
          #endregion
-     }
- }
+    }
 

@@ -128,7 +128,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 33248295}
-  m_Layer: 0
+  - component: {fileID: 33248296}
+  m_Layer: 3
   m_Name: Map
   m_TagString: GroundTag
   m_Icon: {fileID: 0}
@@ -153,6 +154,28 @@ Transform:
   - {fileID: 778094099}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!64 &33248296
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 33248294}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 0}
 --- !u!1 &159165373
 GameObject:
   m_ObjectHideFlags: 0
@@ -539,7 +562,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: 0.7071068, w: 0.7071068}
   m_LocalPosition: {x: 3.5573056, y: -9.206052, z: 5.4767346}
-  m_LocalScale: {x: -0.5, y: 0.17366317, z: 2.0358405}
+  m_LocalScale: {x: 0.5, y: 0.17366317, z: 2.0358405}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 560093764}
@@ -575,7 +598,7 @@ GameObject:
   m_Component:
   - component: {fileID: 511697639}
   - component: {fileID: 511697640}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Cube (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -784,7 +807,7 @@ GameObject:
   - component: {fileID: 778094098}
   - component: {fileID: 778094097}
   - component: {fileID: 778094096}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Ground
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -891,7 +914,7 @@ GameObject:
   m_Component:
   - component: {fileID: 877553486}
   - component: {fileID: 877553487}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Cube (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -944,7 +967,7 @@ GameObject:
   m_Component:
   - component: {fileID: 955072166}
   - component: {fileID: 955072167}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Cube (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -996,7 +1019,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1059035326}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Map Edges
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1172,7 +1195,7 @@ GameObject:
   - component: {fileID: 1094784036}
   - component: {fileID: 1094784035}
   - component: {fileID: 1094784034}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Ramp
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1510,7 +1533,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1173665958}
   - component: {fileID: 1173665959}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Cube (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1841,6 +1864,10 @@ MonoBehaviour:
   tank_max_speed: 100
   tank_rotation_speed: 45
   tank_rotation_at_max_speed: 15
+  groundCheckDistance: 1
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 8
 --- !u!114 &1297376539
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2178,7 +2205,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2002246410}
   - component: {fileID: 2002246411}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2334,7 +2361,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: 0.7071068, w: 0.7071068}
   m_LocalPosition: {x: 2.37, y: -9.206052, z: 5.4767346}
-  m_LocalScale: {x: -0.5, y: 0.17366317, z: 2.1069078}
+  m_LocalScale: {x: 0.5, y: 0.17366317, z: 2.1069078}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 560093764}
