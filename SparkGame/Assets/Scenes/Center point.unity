@@ -162,7 +162,7 @@ GameObject:
   m_Component:
   - component: {fileID: 511697639}
   - component: {fileID: 511697640}
-  m_Layer: 3
+  m_Layer: 2
   m_Name: Cube (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -468,7 +468,7 @@ GameObject:
   m_Component:
   - component: {fileID: 877553486}
   - component: {fileID: 877553487}
-  m_Layer: 3
+  m_Layer: 2
   m_Name: Cube (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -521,7 +521,7 @@ GameObject:
   m_Component:
   - component: {fileID: 955072166}
   - component: {fileID: 955072167}
-  m_Layer: 3
+  m_Layer: 2
   m_Name: Cube (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -573,7 +573,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1059035326}
-  m_Layer: 3
+  m_Layer: 2
   m_Name: Map Edges
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -718,7 +718,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1173665958}
   - component: {fileID: 1173665959}
-  m_Layer: 3
+  m_Layer: 2
   m_Name: Cube (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -985,7 +985,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 2.7666693, y: 8.083187, z: -0.6041403}
-  m_LocalScale: {x: 24, y: 3.3, z: 24}
+  m_LocalScale: {x: 24, y: 3.35, z: 24}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 798017494}
@@ -1216,7 +1216,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2002246410}
   - component: {fileID: 2002246411}
-  m_Layer: 3
+  m_Layer: 2
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1310,6 +1310,10 @@ PrefabInstance:
     - target: {fileID: 1414488351615018495, guid: 8cd27a830b9e8f548904b6e8bb709d38, type: 3}
       propertyPath: m_Name
       value: Tank
+      objectReference: {fileID: 0}
+    - target: {fileID: 3643425776851998130, guid: 8cd27a830b9e8f548904b6e8bb709d38, type: 3}
+      propertyPath: impulseForce
+      value: 10000
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
