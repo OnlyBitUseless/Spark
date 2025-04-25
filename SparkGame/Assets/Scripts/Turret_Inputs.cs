@@ -5,11 +5,13 @@ namespace Tank
     public class Turret_Inputs : MonoBehaviour
     {
         #region Variables
-        public Transform kansi;
-        public Transform piippu;
+        public Transform tankBase;
+        public Transform tankBarrel;
+        public GameObject tankProjectile;
         public LayerMask groundLayer;
 
-        public float turret_rotation_speed = 150f;
+        public float turretRotationSpeed = 150f;
+        public float projectileLaunchVelocity = 700f;
 
         private float angle;
         private Vector3 targetPoint;
@@ -24,18 +26,13 @@ namespace Tank
             InvokeRepeating("CalculateRotationAngle", 0.0f, 0.1f);
         }
 
-        
-
-        // Update is called once per frame
         void FixedUpdate()
         {
-            if (Mathf.Abs(angle) > 1) HandleTurretRotation();
-        }
-
-        private void OnDrawGizmos()
-        {
-            Gizmos.color = Color.black;
-            Gizmos.DrawSphere(targetPoint, 0.5f);
+            if (input)
+            {
+                HandleTurretRotation();
+                if (input.FireInput) HandleShooting();
+            }
         }
 
         #endregion
@@ -45,24 +42,29 @@ namespace Tank
 
         protected virtual void HandleTurretRotation()
         {
-            Debug.Log(angle);
-            float maxAngleThisFrame = turret_rotation_speed * Time.deltaTime;
+            float maxAngleThisFrame = turretRotationSpeed * Time.deltaTime;
             float clampedAngle = Mathf.Clamp(angle, -maxAngleThisFrame, maxAngleThisFrame);
-            piippu.RotateAround(kansi.position, transform.up, clampedAngle);
+            tankBarrel.RotateAround(tankBase.position, transform.up, clampedAngle);
             angle = angle-clampedAngle;
         }
 
         protected virtual void CalculateRotationAngle()
         {
             targetPoint = input.ReticlePosition;
-            Vector3 direction = targetPoint - kansi.position;
-            float k = Mathf.Sqrt(Mathf.Pow(direction.x, 2) + Mathf.Pow(direction.z, 2)) * Mathf.Tan(kansi.rotation.y);
-            targetPoint.y = kansi.position.y+k;
 
-            Vector3 fromDirection = piippu.position - kansi.position;
+            Vector3 direction = targetPoint - tankBase.position;
+
+            Vector3 fromDirection = tankBarrel.position - tankBase.position;
             Vector3 toDirection = direction;
-            
+
             angle = Vector3.SignedAngle(fromDirection, toDirection, transform.up);
+        }
+
+        protected virtual void HandleShooting()
+        {
+            
+            GameObject ball = Instantiate(tankProjectile, tankBarrel.position,  tankBarrel.rotation);
+            ball.GetComponent<Rigidbody>().AddRelativeForce(-1*tankBarrel.forward * projectileLaunchVelocity);
         }
 
         #endregion

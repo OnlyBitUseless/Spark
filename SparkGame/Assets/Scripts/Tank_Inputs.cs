@@ -39,6 +39,13 @@ namespace Tank
         {
             get { return trackOnGround; }
         }
+
+        private bool fireInput;
+        public bool FireInput
+        {
+            get { return fireInput; }
+        }
+
         #endregion
 
         #region BuildinMethods
@@ -55,7 +62,7 @@ namespace Tank
         {
             if (collision.gameObject.CompareTag("GroundTag"))
             {
-            trackOnGround = true;
+                trackOnGround = true;
             }
         }
 
@@ -80,6 +87,7 @@ namespace Tank
             
             forwardInput = Input.GetAxis("Vertical");
             rotationInput = Input.GetAxis("Horizontal");
+            fireInput = Input.GetButtonDown("Fire1");
         }
         #endregion
     }
