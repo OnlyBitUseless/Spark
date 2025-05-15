@@ -190,6 +190,11 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 3100786141177538498, guid: ff5865b505316c344ae178f3e4c08c40, type: 3}
   m_PrefabInstance: {fileID: 1343382378}
   m_PrefabAsset: {fileID: 0}
+--- !u!4 &191652096 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1469711517273540192, guid: ff5865b505316c344ae178f3e4c08c40, type: 3}
+  m_PrefabInstance: {fileID: 1343382378}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &191652097
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -203,6 +208,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 257905301}
+  body: {fileID: 191652096}
+  rotationSpeed: 2
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!195 &191652098
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -1278,7 +1288,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1469711517273540192, guid: ff5865b505316c344ae178f3e4c08c40, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 1469711517273540192, guid: ff5865b505316c344ae178f3e4c08c40, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1315,6 +1325,10 @@ PrefabInstance:
     - target: {fileID: 3100786141177538498, guid: ff5865b505316c344ae178f3e4c08c40, type: 3}
       propertyPath: m_Name
       value: EnemyTank
+      objectReference: {fileID: 0}
+    - target: {fileID: 3178987648849971082, guid: ff5865b505316c344ae178f3e4c08c40, type: 3}
+      propertyPath: m_Mass
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 3178987648849971082, guid: ff5865b505316c344ae178f3e4c08c40, type: 3}
       propertyPath: m_Constraints
@@ -1657,6 +1671,10 @@ PrefabInstance:
     - target: {fileID: 1469711517273540192, guid: 8cd27a830b9e8f548904b6e8bb709d38, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1469711517273540192, guid: 8cd27a830b9e8f548904b6e8bb709d38, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 1469711517273540192, guid: 8cd27a830b9e8f548904b6e8bb709d38, type: 3}
       propertyPath: m_LocalPosition.z
