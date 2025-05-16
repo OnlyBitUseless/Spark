@@ -7,6 +7,8 @@ namespace Tank
         #region Variables
         public Transform tankBase;
         public Transform tankBarrel;
+        public Transform tankBarrelEndPoint;
+
         public LayerMask groundLayer;
         public ProjectileController projectile;
 
@@ -48,34 +50,35 @@ namespace Tank
 
         protected virtual void HandleTurretRotation()
         {
-            float maxAngleThisFrame = turretRotationSpeed * Time.deltaTime;
-            float clampedAngle = Mathf.Clamp(angle, -maxAngleThisFrame, maxAngleThisFrame);
-            tankBarrel.RotateAround(tankBase.position, transform.up, clampedAngle);
-            angle = angle-clampedAngle;
+            float rotationDelta = turretRotationSpeed * Time.deltaTime;
+            float rotationOffset = Mathf.Clamp(angle, -rotationDelta, rotationDelta);
+            
+            tankBarrel.RotateAround(tankBase.position, transform.up, rotationOffset);
+            angle -= rotationOffset;
         }
 
         protected virtual void CalculateRotationAngle()
         {
             targetPoint = input.ReticlePosition;
 
-            Vector3 direction = targetPoint - tankBase.position;
+            Vector3 toDirection = targetPoint - tankBase.position;
+            toDirection.y = 0;
 
-            Vector3 fromDirection = tankBarrel.position - tankBase.position;
-            Vector3 toDirection = direction;
+            Vector3 currentDirection = tankBarrel.position - tankBase.position;
+            currentDirection.y = 0;
 
-            angle = Vector3.SignedAngle(fromDirection, toDirection, transform.up);
+            angle = Vector3.SignedAngle(currentDirection, toDirection, transform.up);
         }
 
         protected virtual void HandleShooting()
         {
-            Quaternion projectileRotation = tankBarrel.rotation;
-            projectileRotation.x = tankBarrel.rotation.x;
             ProjectileController instance = ObjectPooler.DequeueObject<ProjectileController>("Projectile");
             Physics.IgnoreCollision(instance.GetComponent<Collider>(), tankBarrel.GetComponent<Collider>());
-            instance.transform.position = tankBarrel.position;
+
+            instance.transform.position = tankBarrelEndPoint.position;
+            instance.transform.rotation = tankBarrel.rotation;
             instance.gameObject.SetActive(true);
-            instance.transform.rotation = projectileRotation;
-            instance.Initialize(30.0f, 100.0f);
+            instance.Initialize(100.0f, 100.0f);
         }
         #endregion
     }

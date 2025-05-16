@@ -141,6 +141,37 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!1 &216348037148520210
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7723592816446288106}
+  m_Layer: 0
+  m_Name: tankBarrelend
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7723592816446288106
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 216348037148520210}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.39, z: 0.5}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8292247937713996156}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &404848287026866740
 GameObject:
   m_ObjectHideFlags: 0
@@ -446,7 +477,7 @@ GameObject:
   - component: {fileID: 6048264777927776421}
   - component: {fileID: 102914751644019162}
   m_Layer: 0
-  m_Name: Piippu
+  m_Name: tankBarrel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -461,10 +492,11 @@ Transform:
   m_GameObject: {fileID: 2356059599038696487}
   serializedVersion: 2
   m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: -0.15, z: 0}
+  m_LocalPosition: {x: 0.024, y: -0.15, z: 0.05}
   m_LocalScale: {x: 0.3, y: 1, z: 0.3}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 7723592816446288106}
   m_Father: {fileID: 2305998320183897116}
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
 --- !u!33 &2257637115536630727
@@ -1151,7 +1183,7 @@ GameObject:
   - component: {fileID: 8081493832430960543}
   - component: {fileID: 4317841429816546483}
   m_Layer: 0
-  m_Name: Kansi
+  m_Name: tankBase
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1165,9 +1197,9 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8117653989834615946}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.02, y: -0.14999998, z: -0.94000024}
-  m_LocalScale: {x: 1, y: 0.19999997, z: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.019999998, y: -0.14999986, z: -0.94000053}
+  m_LocalScale: {x: 1, y: 0.19999996, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2305998320183897116}
@@ -1383,12 +1415,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tankBase: {fileID: 404610567126426426}
   tankBarrel: {fileID: 8292247937713996156}
-  tankProjectile: {fileID: 0}
+  tankBarrelEndPoint: {fileID: 7723592816446288106}
   groundLayer:
     serializedVersion: 2
     m_Bits: 8
+  projectile: {fileID: 0}
   turretRotationSpeed: 150
-  projectileLaunchVelocity: 700
+  turretBulletSpeed: 12
+  maxBulletAmount: 5
 --- !u!114 &7421779359866204238
 MonoBehaviour:
   m_ObjectHideFlags: 0
