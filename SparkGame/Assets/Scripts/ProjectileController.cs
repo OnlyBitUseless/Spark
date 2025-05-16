@@ -13,8 +13,7 @@ public class ProjectileController : MonoBehaviour
 
     void Update()
     {
-        float speed_factor = Mathf.InverseLerp(0, speed, Mathf.Abs(lifetime));
-        transform.position += transform.up * speed * speed_factor * Time.deltaTime;
+        transform.position += transform.up * speed * Time.deltaTime;
 
         if (lifetime < 0.0f)
         {

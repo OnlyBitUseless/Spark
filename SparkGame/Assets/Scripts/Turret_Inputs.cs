@@ -14,7 +14,7 @@ namespace Tank
 
 
         public float turretRotationSpeed = 150f;
-        public float turretBulletSpeed= 12f;
+        public float turretBulletSpeed = 12f;
 
         private float angle;
         private Vector3 targetPoint;
@@ -77,7 +77,7 @@ namespace Tank
             instance.transform.position = tankBarrelEndPoint.position;
             instance.transform.rotation = tankBarrel.rotation;
             
-            instance.Initialize(100.0f, 100.0f);
+            instance.Initialize(turretBulletSpeed, 100.0f);
             instance.gameObject.SetActive(true);
         }
         #endregion

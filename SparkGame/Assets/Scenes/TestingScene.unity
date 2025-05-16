@@ -1037,6 +1037,10 @@ PrefabInstance:
       propertyPath: projectile
       value: 
       objectReference: {fileID: 6664645669441349830}
+    - target: {fileID: 6743501079932424578, guid: 8cd27a830b9e8f548904b6e8bb709d38, type: 3}
+      propertyPath: turretBulletSpeed
+      value: 50
+      objectReference: {fileID: 0}
     - target: {fileID: 8795521691230377329, guid: 8cd27a830b9e8f548904b6e8bb709d38, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

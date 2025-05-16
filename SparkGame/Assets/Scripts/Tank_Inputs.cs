@@ -87,7 +87,7 @@ namespace Tank
             
             forwardInput = Input.GetAxis("Vertical");
             rotationInput = Input.GetAxis("Horizontal");
-            fireInput = Input.GetButtonDown("Fire1");
+            fireInput = (Input.GetButtonDown("Fire1") || Input.GetKeyDown(KeyCode.Space));
         }
         #endregion
     }
