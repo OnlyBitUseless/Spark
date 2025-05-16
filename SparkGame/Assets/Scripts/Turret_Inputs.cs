@@ -74,11 +74,11 @@ namespace Tank
         {
             ProjectileController instance = ObjectPooler.DequeueObject<ProjectileController>("Projectile");
             Physics.IgnoreCollision(instance.GetComponent<Collider>(), tankBarrel.GetComponent<Collider>());
-
             instance.transform.position = tankBarrelEndPoint.position;
             instance.transform.rotation = tankBarrel.rotation;
-            instance.gameObject.SetActive(true);
+            
             instance.Initialize(100.0f, 100.0f);
+            instance.gameObject.SetActive(true);
         }
         #endregion
     }

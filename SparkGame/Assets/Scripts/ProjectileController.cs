@@ -24,7 +24,7 @@ public class ProjectileController : MonoBehaviour
         lifetime -= 1;
     }
 
-    void OnTriggerEnter(Collider other)
+    void OnCollision(Collider other)
     {
         ObjectPooler.EnqueueObject(this, "Projectile");
     }

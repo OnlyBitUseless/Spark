@@ -889,6 +889,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2356059599038696487, guid: 8cd27a830b9e8f548904b6e8bb709d38, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3100786141177538498, guid: 8cd27a830b9e8f548904b6e8bb709d38, type: 3}
       propertyPath: m_Name
       value: Tank
@@ -933,6 +937,10 @@ PrefabInstance:
     - target: {fileID: 2545108371360365580, guid: d3bfca88ed593904a93455864d42adcf, type: 3}
       propertyPath: m_Time
       value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2545108371360365580, guid: d3bfca88ed593904a93455864d42adcf, type: 3}
+      propertyPath: m_CastShadows
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2545108371360365580, guid: d3bfca88ed593904a93455864d42adcf, type: 3}
       propertyPath: m_Autodestruct
