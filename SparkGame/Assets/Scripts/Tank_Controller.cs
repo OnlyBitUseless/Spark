@@ -10,7 +10,7 @@ using UnityEngine;
          public float tank_max_speed = 100f;
          public float tank_rotation_speed = 200f;
          public float tank_rotation_at_max_speed = 15f;
-        public float groundCheckDistance = 1.5f;
+         public float groundCheckDistance = 1.5f;
          private Rigidbody rb;
          private Tank_Inputs input;
          #endregion

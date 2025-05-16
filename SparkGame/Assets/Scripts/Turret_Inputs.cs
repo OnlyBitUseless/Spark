@@ -7,15 +7,18 @@ namespace Tank
         #region Variables
         public Transform tankBase;
         public Transform tankBarrel;
-        public GameObject tankProjectile;
         public LayerMask groundLayer;
+        public ProjectileController projectile;
+
 
         public float turretRotationSpeed = 150f;
-        public float projectileLaunchVelocity = 700f;
+        public float turretBulletSpeed= 12f;
 
         private float angle;
         private Vector3 targetPoint;
         private Tank_Inputs input;
+        
+        public int maxBulletAmount = 5;
         
         #endregion
         
@@ -31,7 +34,10 @@ namespace Tank
             if (input)
             {
                 HandleTurretRotation();
-                if (input.FireInput) HandleShooting();
+                if (input.FireInput)
+                {
+                    HandleShooting();
+                }
             }
         }
 
@@ -62,11 +68,15 @@ namespace Tank
 
         protected virtual void HandleShooting()
         {
-            
-            GameObject ball = Instantiate(tankProjectile, tankBarrel.position,  tankBarrel.rotation);
-            ball.GetComponent<Rigidbody>().AddRelativeForce(-1*tankBarrel.forward * projectileLaunchVelocity);
+            Quaternion projectileRotation = tankBarrel.rotation;
+            projectileRotation.x = tankBarrel.rotation.x;
+            ProjectileController instance = ObjectPooler.DequeueObject<ProjectileController>("Projectile");
+            Physics.IgnoreCollision(instance.GetComponent<Collider>(), tankBarrel.GetComponent<Collider>());
+            instance.transform.position = tankBarrel.position;
+            instance.gameObject.SetActive(true);
+            instance.transform.rotation = projectileRotation;
+            instance.Initialize(30.0f, 100.0f);
         }
-
         #endregion
     }
 }
