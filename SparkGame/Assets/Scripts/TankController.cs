@@ -1,16 +1,16 @@
 using UnityEngine;
-
-namespace Tank
-{
-    public class Turret_Inputs : MonoBehaviour
+ 
+ namespace Tank
+ {
+    public class TankController : MonoBehaviour
     {
         #region Variables
-        public Transform tankBase;
-        public Transform tankBarrel;
-        public Transform tankBarrelEndPoint;
-
-        public LayerMask groundLayer;
-        public ProjectileController projectile;
+        [Header("Movement properties")]
+        public float tank_speed = 15f;
+        public float tank_max_speed = 100f;
+        public float tank_rotation_speed = 200f;
+        public float tank_rotation_at_max_speed = 15f;
+        public float groundCheckDistance = 1.5f;
 
         public float turretRotationSpeed = 150f;
         public float turretBulletSpeed = 12f;
@@ -18,21 +18,44 @@ namespace Tank
 
         private float angle;
         private Vector3 targetPoint;
-        private Tank_Inputs input;
-        
+
+        [Header("Game objects")]
+        private Rigidbody rb;
+        public Transform tankBase;
+        public Transform tankBarrel;
+        public Transform tankBarrelEndPoint;
+
+        [Header("Layers")]
+        public LayerMask groundLayer;
+
+        [Header("Scripts")]
+        public ProjectileController projectile;
+        private TankInputs input;
+
+
         #endregion
-        
+
         #region BuildinMethods
         void Start()
         {
-            input = GetComponent<Tank_Inputs>();
+            rb = GetComponent<Rigidbody>();
+            input = GetComponent<TankInputs>();
             InvokeRepeating("CalculateRotationAngle", 0.0f, 0.1f);
         }
-
+ 
         void FixedUpdate()
         {
-            if (input)
+
+            Vector3 RaycastOrigin = transform.position + Vector3.up;
+
+            bool isGrounded = Physics.Raycast(RaycastOrigin, Vector3.down, groundCheckDistance);
+
+            //Debug.DrawRay(transform.position, Vector3.down * groundCheckDistance, Color.blue);
+
+            if (rb && input && isGrounded)
             {
+                if (isGrounded) HandleMovement();
+
                 HandleTurretRotation();
                 if (input.FireInput)
                 {
@@ -40,11 +63,23 @@ namespace Tank
                 }
             }
         }
-
         #endregion
 
-        #region CustomMethods  
-        
+        #region CustomMethods
+        protected virtual void HandleMovement()
+        {
+            float forward_speed = Vector3.Dot(transform.forward, rb.linearVelocity);
+            float speed_factor = Mathf.InverseLerp(0, tank_max_speed, Mathf.Abs(forward_speed));
+
+            float current_speed = Mathf.Lerp(tank_speed, 0, speed_factor);
+            float current_rotation = Mathf.Lerp(tank_rotation_speed, tank_rotation_at_max_speed, speed_factor);
+
+            Vector3 movement = transform.forward * input.ForwardInput * current_speed;
+            rb.AddForce(movement);
+
+            Quaternion target_rotation = transform.rotation * Quaternion.Euler(Vector3.up * (current_rotation* input.RotationInput * Time.deltaTime));
+            rb.MoveRotation(target_rotation);
+        }
 
         protected virtual void HandleTurretRotation()
         {
@@ -79,7 +114,7 @@ namespace Tank
             instance.gameObject.SetActive(true);
             
         }
+
         #endregion
     }
 }
-

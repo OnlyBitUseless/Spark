@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace Tank
 {
-    public class Tank_Inputs : MonoBehaviour
+    public class TankInputs : MonoBehaviour
     {
         #region Variables
         [Header("Input Properties")]
