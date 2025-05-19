@@ -211,16 +211,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!4 &542000353 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 2123857507591705197, guid: 8cd27a830b9e8f548904b6e8bb709d38, type: 3}
-  m_PrefabInstance: {fileID: 7390800289074049944}
-  m_PrefabAsset: {fileID: 0}
---- !u!4 &756663123 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 930295951837347018, guid: 8cd27a830b9e8f548904b6e8bb709d38, type: 3}
-  m_PrefabInstance: {fileID: 7390800289074049944}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &778094095
 GameObject:
   m_ObjectHideFlags: 0
@@ -811,56 +801,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
---- !u!1 &1680129566 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4999763214011151571, guid: 8cd27a830b9e8f548904b6e8bb709d38, type: 3}
-  m_PrefabInstance: {fileID: 7390800289074049944}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1814210730 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8795521691230377329, guid: 8cd27a830b9e8f548904b6e8bb709d38, type: 3}
   m_PrefabInstance: {fileID: 7390800289074049944}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1814210732
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1680129566}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 958b29e1e5299fe43976ed3c814b52a5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  tank_speed: 15
-  tank_max_speed: 100
-  tank_rotation_speed: 200
-  tank_rotation_at_max_speed: 15
-  turretRotationSpeed: 150
-  turretBulletSpeed: 12
-  turretImpulse: 10
-  tankBase: {fileID: 756663123}
-  tankBarrel: {fileID: 542000353}
-  tankBarrelEndPoint: {fileID: 2134830289}
-  groundLayer:
-    serializedVersion: 2
-    m_Bits: 8
-  projectile: {fileID: 1926838962}
---- !u!114 &1814210733
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1680129566}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8e5a1aec343cd8244a2d8a2c9f302c60, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  mainCamera: {fileID: 247992816}
-  groundCheckDistance: 1.5
 --- !u!1 &1883585017
 GameObject:
   m_ObjectHideFlags: 0
@@ -970,11 +915,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!4 &2134830289 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 379771354610557947, guid: 8cd27a830b9e8f548904b6e8bb709d38, type: 3}
-  m_PrefabInstance: {fileID: 7390800289074049944}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &3152211795601173277
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -993,31 +933,31 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8492151425596436831, guid: 6005d439f0eccc1499a72d691dd2d7a1, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 5.6770377
+      value: 0.2518214
       objectReference: {fileID: 0}
     - target: {fileID: 8492151425596436831, guid: 6005d439f0eccc1499a72d691dd2d7a1, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 13.880641
+      value: 2.8121033
       objectReference: {fileID: 0}
     - target: {fileID: 8492151425596436831, guid: 6005d439f0eccc1499a72d691dd2d7a1, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -1.5184174
+      value: -5.4654055
       objectReference: {fileID: 0}
     - target: {fileID: 8492151425596436831, guid: 6005d439f0eccc1499a72d691dd2d7a1, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.67948425
+      value: 0.98627836
       objectReference: {fileID: 0}
     - target: {fileID: 8492151425596436831, guid: 6005d439f0eccc1499a72d691dd2d7a1, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.43399364
+      value: 0.16361906
       objectReference: {fileID: 0}
     - target: {fileID: 8492151425596436831, guid: 6005d439f0eccc1499a72d691dd2d7a1, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.49855098
+      value: -0.021701872
       objectReference: {fileID: 0}
     - target: {fileID: 8492151425596436831, guid: 6005d439f0eccc1499a72d691dd2d7a1, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.31842992
+      value: 0.0035996735
       objectReference: {fileID: 0}
     - target: {fileID: 8492151425596436831, guid: 6005d439f0eccc1499a72d691dd2d7a1, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -1060,6 +1000,10 @@ PrefabInstance:
       propertyPath: tank_rotation_at_max_speed
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4533309264222287777, guid: 8cd27a830b9e8f548904b6e8bb709d38, type: 3}
+      propertyPath: mainCamera
+      value: 
+      objectReference: {fileID: 247992816}
     - target: {fileID: 4999763214011151571, guid: 8cd27a830b9e8f548904b6e8bb709d38, type: 3}
       propertyPath: m_Name
       value: Tank
@@ -1072,6 +1016,10 @@ PrefabInstance:
       propertyPath: turretBulletSpeed
       value: 50
       objectReference: {fileID: 0}
+    - target: {fileID: 7708512805072183823, guid: 8cd27a830b9e8f548904b6e8bb709d38, type: 3}
+      propertyPath: projectile
+      value: 
+      objectReference: {fileID: 1926838962}
     - target: {fileID: 8795521691230377329, guid: 8cd27a830b9e8f548904b6e8bb709d38, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -1119,13 +1067,7 @@ PrefabInstance:
     - {fileID: 1793654392925786874, guid: 8cd27a830b9e8f548904b6e8bb709d38, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 4999763214011151571, guid: 8cd27a830b9e8f548904b6e8bb709d38, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1814210733}
-    - targetCorrespondingSourceObject: {fileID: 4999763214011151571, guid: 8cd27a830b9e8f548904b6e8bb709d38, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1814210732}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8cd27a830b9e8f548904b6e8bb709d38, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:

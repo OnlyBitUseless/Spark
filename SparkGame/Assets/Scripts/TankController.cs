@@ -44,14 +44,10 @@ using UnityEngine;
  
         void FixedUpdate()
         {
-
-            //Debug.DrawRay(transform.position, Vector3.down * groundCheckDistance, Color.blue);
-
             if (rb && input)
             {
-                if (input.IsGrounded) HandleMovement();
-
                 HandleTurretRotation();
+                if (input.IsGrounded) HandleMovement();
                 if (input.FireInput)
                 {
                     HandleShooting();

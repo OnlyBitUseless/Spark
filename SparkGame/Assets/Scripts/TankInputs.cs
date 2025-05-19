@@ -56,7 +56,7 @@ namespace Tank
 
         #region BuildinMethods
 
-        void Update()
+        void FixedUpdate()
         {
             if (mainCamera)
             {
