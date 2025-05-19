@@ -12,15 +12,13 @@ namespace Tank
         public LayerMask groundLayer;
         public ProjectileController projectile;
 
-
         public float turretRotationSpeed = 150f;
         public float turretBulletSpeed = 12f;
+        public float impulse = 30f;
 
         private float angle;
         private Vector3 targetPoint;
         private Tank_Inputs input;
-        
-        public int maxBulletAmount = 5;
         
         #endregion
         
@@ -79,6 +77,7 @@ namespace Tank
             
             instance.Initialize(turretBulletSpeed, 100.0f);
             instance.gameObject.SetActive(true);
+            
         }
         #endregion
     }

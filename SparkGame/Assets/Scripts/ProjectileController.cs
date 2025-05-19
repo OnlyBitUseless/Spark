@@ -5,10 +5,10 @@ public class ProjectileController : MonoBehaviour
     float speed = 0.0f;
     float lifetime = 0.0f;
 
-    public void Initialize(float initialSpeed, float initialifetime)
+    public void Initialize(float initialSpeed, float initialLifetime)
     {
         speed = initialSpeed;
-        lifetime = initialifetime;
+        lifetime = initialLifetime;
     }
 
     void Update()
@@ -21,10 +21,5 @@ public class ProjectileController : MonoBehaviour
         }
 
         lifetime -= 1;
-    }
-
-    void OnCollision(Collider other)
-    {
-        ObjectPooler.EnqueueObject(this, "Projectile");
     }
 }
