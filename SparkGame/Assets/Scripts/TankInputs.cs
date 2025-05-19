@@ -7,6 +7,7 @@ namespace Tank
         #region Variables
         [Header("Input Properties")]
         public Camera mainCamera;
+        public float groundCheckDistance = 1.5f;
         #endregion
 
         #region Properties
@@ -46,6 +47,11 @@ namespace Tank
             get { return fireInput; }
         }
 
+        private bool isGrounded;
+        public bool IsGrounded
+        {
+            get { return isGrounded; }
+        }
         #endregion
 
         #region BuildinMethods
@@ -88,6 +94,10 @@ namespace Tank
             forwardInput = Input.GetAxis("Vertical");
             rotationInput = Input.GetAxis("Horizontal");
             fireInput = (Input.GetButtonDown("Fire1") || Input.GetKeyDown(KeyCode.Space));
+
+            Vector3 RaycastOrigin = transform.position + Vector3.up;
+
+            isGrounded = Physics.Raycast(RaycastOrigin, Vector3.down, groundCheckDistance);
         }
         #endregion
     }

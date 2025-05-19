@@ -10,11 +10,10 @@ using UnityEngine;
         public float tank_max_speed = 100f;
         public float tank_rotation_speed = 200f;
         public float tank_rotation_at_max_speed = 15f;
-        public float groundCheckDistance = 1.5f;
 
         public float turretRotationSpeed = 150f;
         public float turretBulletSpeed = 12f;
-        public float impulse = 30f;
+        public float turretImpulse = 30f;
 
         private float angle;
         private Vector3 targetPoint;
@@ -46,15 +45,11 @@ using UnityEngine;
         void FixedUpdate()
         {
 
-            Vector3 RaycastOrigin = transform.position + Vector3.up;
-
-            bool isGrounded = Physics.Raycast(RaycastOrigin, Vector3.down, groundCheckDistance);
-
             //Debug.DrawRay(transform.position, Vector3.down * groundCheckDistance, Color.blue);
 
-            if (rb && input && isGrounded)
+            if (rb && input)
             {
-                if (isGrounded) HandleMovement();
+                if (input.IsGrounded) HandleMovement();
 
                 HandleTurretRotation();
                 if (input.FireInput)
@@ -113,6 +108,7 @@ using UnityEngine;
             instance.Initialize(turretBulletSpeed, 100.0f);
             instance.gameObject.SetActive(true);
             
+            rb.AddForce(-1 * turretImpulse * tankBarrel.up, ForceMode.Impulse);
         }
 
         #endregion
