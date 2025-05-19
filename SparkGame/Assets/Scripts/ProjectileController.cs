@@ -22,9 +22,4 @@ public class ProjectileController : MonoBehaviour
 
         lifetime -= 1;
     }
-
-    void OnCollisionEnter (Collider other)
-    {
-        ObjectPooler.EnqueueObject(this, "Projectile");
-    }
 }
