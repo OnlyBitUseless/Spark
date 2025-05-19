@@ -181,8 +181,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5650333042121719565}
-  - component: {fileID: 6743501079932424578}
-  - component: {fileID: 618677288359355231}
   m_Layer: 0
   m_Name: Turret
   m_TagString: Untagged
@@ -207,41 +205,6 @@ Transform:
   - {fileID: 7779961333685219371}
   m_Father: {fileID: 8795521691230377329}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &6743501079932424578
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2100503684397266116}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 08867c92103db824b89992fa70cc0b01, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  tankBase: {fileID: 7779961333685219371}
-  tankBarrel: {fileID: 2123857507591705197}
-  tankBarrelEndPoint: {fileID: 379771354610557947}
-  groundLayer:
-    serializedVersion: 2
-    m_Bits: 8
-  projectile: {fileID: 0}
-  turretRotationSpeed: 150
-  turretBulletSpeed: 12
-  maxBulletAmount: 5
---- !u!114 &618677288359355231
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2100503684397266116}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dcfcf49e604b6774492f811919c6cfde, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  mainCamera: {fileID: 0}
 --- !u!1 &2219498349289783195
 GameObject:
   m_ObjectHideFlags: 0
@@ -460,9 +423,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8795521691230377329}
-  - component: {fileID: 706864306142484145}
-  - component: {fileID: 1793654392925786874}
   - component: {fileID: 4788600576179623067}
+  - component: {fileID: 7708512805072183823}
+  - component: {fileID: 4533309264222287777}
   m_Layer: 0
   m_Name: Tank
   m_TagString: Untagged
@@ -488,39 +451,6 @@ Transform:
   - {fileID: 5267925586564102922}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &706864306142484145
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4999763214011151571}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dcfcf49e604b6774492f811919c6cfde, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  mainCamera: {fileID: 0}
---- !u!114 &1793654392925786874
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4999763214011151571}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cbcaf55bc9af6f74cbb687b110893672, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  tank_speed: 15
-  tank_max_speed: 45
-  tank_rotation_speed: 160
-  tank_rotation_at_max_speed: 15
-  groundCheckDistance: 1
-  groundLayer:
-    serializedVersion: 2
-    m_Bits: 8
 --- !u!54 &4788600576179623067
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -548,6 +478,46 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &7708512805072183823
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4999763214011151571}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 958b29e1e5299fe43976ed3c814b52a5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tank_speed: 15
+  tank_max_speed: 100
+  tank_rotation_speed: 200
+  tank_rotation_at_max_speed: 15
+  turretRotationSpeed: 150
+  turretBulletSpeed: 12
+  turretImpulse: 30
+  tankBase: {fileID: 930295951837347018}
+  tankBarrel: {fileID: 2123857507591705197}
+  tankBarrelEndPoint: {fileID: 379771354610557947}
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 0
+  projectile: {fileID: 0}
+--- !u!114 &4533309264222287777
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4999763214011151571}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8e5a1aec343cd8244a2d8a2c9f302c60, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mainCamera: {fileID: 0}
+  groundCheckDistance: 1.5
 --- !u!1 &5407074244780187935
 GameObject:
   m_ObjectHideFlags: 0
