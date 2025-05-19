@@ -11,8 +11,10 @@ using UnityEngine;
          public float tank_rotation_speed = 200f;
          public float tank_rotation_at_max_speed = 15f;
          public float groundCheckDistance = 1.5f;
+
          private Rigidbody rb;
          private Tank_Inputs input;
+
          #endregion
  
          #region BuildinMethods
@@ -53,13 +55,6 @@ using UnityEngine;
             Quaternion target_rotation = transform.rotation * Quaternion.Euler(Vector3.up * (current_rotation* input.RotationInput * Time.deltaTime));
             rb.MoveRotation(target_rotation);
          }
-        public LayerMask groundLayer;
-
-            void Update()
-            {
-                
-            }
-        }
-         #endregion
+        #endregion
     }
-
+}

@@ -284,8 +284,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 247992813}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.43399364, y: -0.49855098, z: 0.31842992, w: 0.67948425}
-  m_LocalPosition: {x: 5.6770377, y: 13.880641, z: -1.5184174}
+  m_LocalRotation: {x: 0.44874018, y: -0.51728845, z: 0.36960804, w: 0.62804043}
+  m_LocalPosition: {x: 4.627854, y: 14.646059, z: -0.9034711}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -891,6 +891,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+--- !u!54 &1814210727 stripped
+Rigidbody:
+  m_CorrespondingSourceObject: {fileID: 4788600576179623067, guid: 8cd27a830b9e8f548904b6e8bb709d38, type: 3}
+  m_PrefabInstance: {fileID: 7390800289074049944}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1814210730 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8795521691230377329, guid: 8cd27a830b9e8f548904b6e8bb709d38, type: 3}
@@ -1032,6 +1037,14 @@ PrefabInstance:
     - target: {fileID: 4999763214011151571, guid: 8cd27a830b9e8f548904b6e8bb709d38, type: 3}
       propertyPath: m_Name
       value: Tank
+      objectReference: {fileID: 0}
+    - target: {fileID: 6743501079932424578, guid: 8cd27a830b9e8f548904b6e8bb709d38, type: 3}
+      propertyPath: tank_rb
+      value: 
+      objectReference: {fileID: 1814210727}
+    - target: {fileID: 6743501079932424578, guid: 8cd27a830b9e8f548904b6e8bb709d38, type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6743501079932424578, guid: 8cd27a830b9e8f548904b6e8bb709d38, type: 3}
       propertyPath: projectile
