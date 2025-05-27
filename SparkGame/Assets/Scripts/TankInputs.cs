@@ -11,6 +11,8 @@ namespace Tank
         #endregion
 
         #region Properties
+        private int groundLayerMask;
+
         private Vector3 reticlePosition;
         public Vector3 ReticlePosition
         {
@@ -64,12 +66,9 @@ namespace Tank
             }
         }
 
-        void OnCollisionEnter(Collision collision)
+        void Awake()
         {
-            if (collision.gameObject.CompareTag("GroundTag"))
-            {
-                trackOnGround = true;
-            }
+            groundLayerMask = LayerMask.GetMask("groundLayer");
         }
 
         private void OnDrawGizmos()
@@ -85,7 +84,7 @@ namespace Tank
         {
             Ray screenRay = mainCamera.ScreenPointToRay(Input.mousePosition);
             RaycastHit hit;
-            if (Physics.Raycast(screenRay, out hit))
+            if (Physics.Raycast(screenRay, out hit, Mathf.Infinity, groundLayerMask))
             {
                 reticlePosition = hit.point;
                 reticleNormal = hit.normal;
