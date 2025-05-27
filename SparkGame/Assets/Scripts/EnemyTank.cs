@@ -6,16 +6,30 @@ using UnityEngine.AI;
 public class PlaceTarget : MonoBehaviour
 {
     public GameObject target;
+    public GameObject self;
     public Transform body;
     NavMeshAgent mr;
     public float rotationSpeed = 2f;
     public LayerMask groundLayer;
+    private bool isAlive = true;
     void Start()
     {
         // Get your own NavMeshagent component
         mr = GetComponent<NavMeshAgent>();
     }
 
+    void OnTriggerEnter(Collider other) 
+    {
+        if(other.CompareTag("Projectile")) 
+        {
+            die();
+        }
+    }
+    void die() 
+    {
+        isAlive = false;
+        Destroy(self);
+    }
     // Update is called once per frame
     void Update()
     {

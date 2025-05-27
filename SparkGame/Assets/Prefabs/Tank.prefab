@@ -495,14 +495,15 @@ MonoBehaviour:
   tank_rotation_speed: 200
   tank_rotation_at_max_speed: 15
   turretRotationSpeed: 150
-  turretBulletSpeed: 12
-  turretImpulse: 30
+  minProjectileSpeed: 20
+  minProjectileCooldown: 1
+  maxHoldMultiplier: 3
   tankBase: {fileID: 930295951837347018}
   tankBarrel: {fileID: 2123857507591705197}
   tankBarrelEndPoint: {fileID: 379771354610557947}
   groundLayer:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 8
   projectile: {fileID: 0}
 --- !u!114 &4533309264222287777
 MonoBehaviour:
