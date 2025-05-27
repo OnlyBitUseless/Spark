@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace Tank
 {
-    public class Enemy_Turret : MonoBehaviour
+    public class EnemyTurret : MonoBehaviour
     {
         #region Variables
         public Transform tankBase;
@@ -18,7 +18,7 @@ namespace Tank
         public float cooldown = 0f;
         private float angle;
         private Vector3 targetPoint;
-        private Tank_Inputs input;
+        private TankInputs input;
         
         #endregion
         

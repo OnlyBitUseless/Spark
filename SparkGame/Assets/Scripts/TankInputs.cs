@@ -43,17 +43,25 @@ namespace Tank
             get { return trackOnGround; }
         }
 
-        private bool fireInput;
-        public bool FireInput
+        private bool fireInputStarted;
+        public bool FireInputStarted
         {
-            get { return fireInput; }
+            get { return fireInputStarted; }
         }
+        
+        private bool fireInputEnded;
+        public bool FireInputEnded
+        {
+            get { return fireInputEnded; }
+        }
+
 
         private bool isGrounded;
         public bool IsGrounded
         {
             get { return isGrounded; }
         }
+
         #endregion
 
         #region BuildinMethods
@@ -92,7 +100,9 @@ namespace Tank
             
             forwardInput = Input.GetAxis("Vertical");
             rotationInput = Input.GetAxis("Horizontal");
-            fireInput = (Input.GetButtonDown("Fire1") || Input.GetKeyDown(KeyCode.Space));
+
+            fireInputStarted = Input.GetButtonDown("Fire1");
+            fireInputEnded = Input.GetButtonUp("Fire1");
 
             Vector3 RaycastOrigin = transform.position + Vector3.up;
 

@@ -12,8 +12,14 @@ using UnityEngine;
         public float tank_rotation_at_max_speed = 15f;
 
         public float turretRotationSpeed = 150f;
-        public float turretBulletSpeed = 12f;
-        public float turretImpulse = 30f;
+
+        public float minProjectileSpeed = 20f;
+
+        public float minProjectileCooldown = 1f;
+        public float maxHoldMultiplier = 3.0f;
+        private float startTime;
+
+        private bool firingState;
 
         private float angle;
         private Vector3 targetPoint;
@@ -48,9 +54,27 @@ using UnityEngine;
             {
                 HandleTurretRotation();
                 if (input.IsGrounded) HandleMovement();
-                if (input.FireInput)
+
+                if (input.FireInputStarted && (!firingState)) {
+                    startTime = Time.time;
+                }
+
+                if (input.FireInputEnded)
+                {
+                    if (Time.time - startTime > minProjectileCooldown)
+                    {
+                        HandleShooting();
+                        firingState = false;
+                    } else {
+                        firingState = true;
+                    }
+                    
+                }
+
+                if (firingState && (Time.time - startTime > minProjectileCooldown))
                 {
                     HandleShooting();
+                    firingState = false;
                 }
             }
         }
@@ -96,15 +120,19 @@ using UnityEngine;
 
         protected virtual void HandleShooting()
         {
+            float forward_speed = Vector3.Dot(tankBarrel.forward, rb.linearVelocity);
+            float holdBonusToSpeed = Mathf.Min(Time.time-startTime, maxHoldMultiplier);
+            float projectileStartingSpeed = forward_speed + minProjectileSpeed + (holdBonusToSpeed)*20;
+
             ProjectileController instance = ObjectPooler.DequeueObject<ProjectileController>("Projectile");
             Physics.IgnoreCollision(instance.GetComponent<Collider>(), tankBarrel.GetComponent<Collider>());
             instance.transform.position = tankBarrelEndPoint.position;
             instance.transform.rotation = tankBarrel.rotation;
             
-            instance.Initialize(turretBulletSpeed, 100.0f);
+            instance.Initialize(projectileStartingSpeed, projectileStartingSpeed*10);
             instance.gameObject.SetActive(true);
             
-            rb.AddForce(-1 * turretImpulse * tankBarrel.up, ForceMode.Impulse);
+            rb.AddForce(-1*(projectileStartingSpeed/5) * tankBarrel.up, ForceMode.Impulse);
         }
 
         #endregion
