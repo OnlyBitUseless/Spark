@@ -379,9 +379,25 @@ PrefabInstance:
       propertyPath: mainCamera
       value: 
       objectReference: {fileID: 441176913}
+    - target: {fileID: 4533309264222287777, guid: 8cd27a830b9e8f548904b6e8bb709d38, type: 3}
+      propertyPath: mainCamera
+      value: 
+      objectReference: {fileID: 441176913}
     - target: {fileID: 4999763214011151571, guid: 8cd27a830b9e8f548904b6e8bb709d38, type: 3}
       propertyPath: m_Name
       value: Tank
+      objectReference: {fileID: 0}
+    - target: {fileID: 7708512805072183823, guid: 8cd27a830b9e8f548904b6e8bb709d38, type: 3}
+      propertyPath: projectile
+      value: 
+      objectReference: {fileID: 1295082159}
+    - target: {fileID: 7708512805072183823, guid: 8cd27a830b9e8f548904b6e8bb709d38, type: 3}
+      propertyPath: turretImpulse
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7708512805072183823, guid: 8cd27a830b9e8f548904b6e8bb709d38, type: 3}
+      propertyPath: groundLayer.m_Bits
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 8795521691230377329, guid: 8cd27a830b9e8f548904b6e8bb709d38, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1531,6 +1547,8 @@ PrefabInstance:
     m_RemovedComponents:
     - {fileID: 8543004811053580779, guid: ff5865b505316c344ae178f3e4c08c40, type: 3}
     - {fileID: 7468595327476614560, guid: ff5865b505316c344ae178f3e4c08c40, type: 3}
+    - {fileID: 3746770824794833555, guid: ff5865b505316c344ae178f3e4c08c40, type: 3}
+    - {fileID: 7421779359866204238, guid: ff5865b505316c344ae178f3e4c08c40, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 8292247937713996156, guid: ff5865b505316c344ae178f3e4c08c40, type: 3}

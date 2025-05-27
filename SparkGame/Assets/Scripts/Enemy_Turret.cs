@@ -18,7 +18,6 @@ namespace Tank
         public float cooldown = 0f;
         private float angle;
         private Vector3 targetPoint;
-        private Tank_Inputs input;
         
         #endregion
         
