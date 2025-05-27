@@ -32,9 +32,6 @@ using UnityEngine;
         public Transform tankBarrel;
         public Transform tankBarrelEndPoint;
 
-        [Header("Layers")]
-        public LayerMask groundLayer;
-
         [Header("Scripts")]
         public ProjectileController projectile;
         private TankInputs input;
