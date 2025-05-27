@@ -8,7 +8,7 @@ using UnityEngine;
         [Header("Movement properties")]
         public float tank_speed = 15f;
         public float tank_max_speed = 100f;
-        public float tank_rotation_speed = 200f;
+        public float tank_rotation_speed = 160f;
         public float tank_rotation_at_max_speed = 15f;
 
         public float turretRotationSpeed = 150f;
@@ -17,7 +17,9 @@ using UnityEngine;
 
         public float minProjectileCooldown = 1f;
         public float maxHoldMultiplier = 3.0f;
+
         private float startTime;
+        private float lastTime;
 
         private bool firingState;
 
@@ -55,27 +57,20 @@ using UnityEngine;
                 HandleTurretRotation();
                 if (input.IsGrounded) HandleMovement();
 
-                if (input.FireInputStarted && (!firingState)) {
-                    startTime = Time.time;
-                }
-
-                if (input.FireInputEnded)
+                if (!firingState)
                 {
-                    if (Time.time - startTime > minProjectileCooldown)
-                    {
-                        HandleShooting();
-                        firingState = false;
-                    } else {
-                        firingState = true;
+                    Debug.Log(Time.time-lastTime);
+                    if (input.FireInputStarted) {
+                        startTime = Time.time;
                     }
-                    
-                }
 
-                if (firingState && (Time.time - startTime > minProjectileCooldown))
-                {
-                    HandleShooting();
-                    firingState = false;
+                    if (input.FireInputEnded)
+                    {
+                        firingState = true;
+                        Invoke("HandleShooting", Mathf.Max(0, minProjectileCooldown - (Time.time - lastTime)));
+                    }
                 }
+                
             }
         }
         #endregion
@@ -122,7 +117,7 @@ using UnityEngine;
         {
             float forward_speed = Vector3.Dot(tankBarrel.forward, rb.linearVelocity);
             float holdBonusToSpeed = Mathf.Min(Time.time-startTime, maxHoldMultiplier);
-            float projectileStartingSpeed = forward_speed + minProjectileSpeed + (holdBonusToSpeed)*20;
+            float projectileStartingSpeed = forward_speed + minProjectileSpeed + (holdBonusToSpeed)*10;
 
             ProjectileController instance = ObjectPooler.DequeueObject<ProjectileController>("Projectile");
             Physics.IgnoreCollision(instance.GetComponent<Collider>(), tankBarrel.GetComponent<Collider>());
@@ -133,6 +128,9 @@ using UnityEngine;
             instance.gameObject.SetActive(true);
             
             rb.AddForce(-1*(projectileStartingSpeed/5) * tankBarrel.up, ForceMode.Impulse);
+
+            firingState = false;
+            lastTime = Time.time;
         }
 
         #endregion
