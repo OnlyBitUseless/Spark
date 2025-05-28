@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class PlaceTarget : MonoBehaviour
+public class EnemyTank : MonoBehaviour
 {
     public GameObject target;
     public GameObject self;

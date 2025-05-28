@@ -22,4 +22,14 @@ public class ProjectileController : MonoBehaviour
 
         lifetime -= 1;
     }
+
+    void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("Enemy"))
+        {
+            ObjectPooler.EnqueueObject(other, "Enemy");
+        } else {
+            ObjectPooler.EnqueueObject(this, "Projectile");
+        }
+    }
 }

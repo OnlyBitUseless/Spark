@@ -10,7 +10,7 @@ namespace Tank
         public Transform tankBarrelEndPoint;
 
         public LayerMask groundLayer;
-        public ProjectileController projectile;
+        public EnemyProjectile projectile;
         public GameObject target;
         public float turretRotationSpeed = 150f;
         public float turretBulletSpeed = 12f;
@@ -69,7 +69,7 @@ namespace Tank
 
         protected virtual void HandleShooting()
         {
-            ProjectileController instance = ObjectPooler.DequeueObject<ProjectileController>("Projectile");
+            EnemyProjectile instance = ObjectPooler.DequeueObject<EnemyProjectile>("EnemyProjectile");
             Physics.IgnoreCollision(instance.GetComponent<Collider>(), tankBarrel.GetComponent<Collider>());
             instance.transform.position = tankBarrelEndPoint.position;
             instance.transform.rotation = tankBarrel.rotation;
